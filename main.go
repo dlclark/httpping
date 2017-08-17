@@ -22,9 +22,6 @@ import (
 // URI to ping
 var uri = ""
 
-//var httpPort = flag.Int("port", -1, "port to connect to the http server")
-//var hostName = flag.String("host", "wikipedia.org", "host name to ask DNS server to resolve")
-//var recordType = flag.String("rdatatype", "A", "DNS record type of the query")
 var postBody = flag.String("d", "", "the body of a POST or PUT request; from file use @filename")
 var httpMethod = flag.String("X", "GET", "HTTP method to use")
 var count = flag.Int("c", 10, "number of times to query")
@@ -38,12 +35,13 @@ func main() {
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr,
 			`Usage:
-  %s [options] [uri]
+  %s [options] uri
 
 Measure response time to the given web server by asking it to respond to an HTTP GET. 
 
 OPTIONS
   -h                    show this help
+  -X                    HTTP method to use
   -c <int>              number of times to query (default 10)
   -W <duration>         wait time between pings (default 1s)
   -t <duration>         amount of time to wait for a server response (default 2s)
